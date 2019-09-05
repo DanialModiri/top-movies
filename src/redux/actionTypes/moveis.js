@@ -1,0 +1,5 @@
+
+
+export const FETCH_MOVIES = 'FETCH_MOVIES';
+
+export const FETCHING_MOVIES = 'FETCHING_MOVIES'

@@ -1,12 +1,15 @@
 import React from 'react';
-import './App.css';
-import { Route, HashRouter, Switch  } from 'react-router-dom'
+import { Route, HashRouter, Switch } from 'react-router-dom'
+import Header from './components/Layout/Header';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <HashRouter>
+      <div className="App">
+        <Header></Header>
+      </div>
+    </HashRouter>
+
   );
 }
 
