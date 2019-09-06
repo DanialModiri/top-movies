@@ -1,0 +1,16 @@
+.breadcrumb {
+    padding: 8px 0;
+    display: flex;
+    list-style: none;
+    direction: rtl;
+    margin-right: 16px;
+
+    li {
+        font-size: 18px;
+    }
+
+    li:not(:first-child)::before {
+        content: '/';
+        margin: 0 8px;
+    }
+}

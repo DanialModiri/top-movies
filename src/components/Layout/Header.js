@@ -13,7 +13,7 @@ export default () => {
             </h1>
 
             <div className="search-box">
-                <input  />
+                <input placeholder="جستجو در تاپ موویز" />
                 <button>
                     <span className="fa fa-search"></span>
                 </button>

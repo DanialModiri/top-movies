@@ -7,8 +7,7 @@ export const movies = (state = { query: {  } }, action) => {
         case FETCH_MOVIES:
             return {
                 ...state,
-                movies: action.movies,
-                query: { ...state.query, page: 1, ...action.query }
+                ...action.payload
             }
         default:
             return state;

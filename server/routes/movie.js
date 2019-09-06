@@ -2,7 +2,7 @@ const router = require('express').Router();
 const fs = require('fs')
 const path = require('path')
 
-const MOVIES_PER_PAGE = 10;
+const MOVIES_PER_PAGE = 14;
 
 function isInt(n) {
     return Number(n) === n && n % 1 === 0;

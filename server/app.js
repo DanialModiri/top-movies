@@ -2,6 +2,9 @@ const express = require('express')
 
 const movie = require('./routes/movie')
 const app = express();
+
+const cors = require('cors')
+app.use(cors());
 app.use(movie)
 
 
