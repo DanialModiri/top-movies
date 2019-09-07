@@ -13,8 +13,6 @@ export default ({ image, title, imdbRating, imdbRatingCout, }) => {
                 </div>
                 <img src={image} alt={title} />
             </div>
-
-
         </div>
     </div>
 }

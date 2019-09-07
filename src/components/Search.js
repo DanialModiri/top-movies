@@ -8,7 +8,8 @@ class Search extends Component {
     searchKey = null;
 
     componentWillMount(){
-
+        this.searchKey = this.props.match.params.q
+        this.props.dispatch(fetchMovies({ q: this.searchKey }))
     }
 
     render() { 

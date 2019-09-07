@@ -5,11 +5,19 @@ import { EXTERNAL_SERVER } from '../../config';
 import Axios from 'axios';
 
 export const fetchMovies = (query, force) => {
-    return async dispatch => {
-        dispatch({ type: FETCHING_MOVIES })
-        const movies = await axios.get(EXTERNAL_SERVER + '/', { params: query }).then(res => res.data);
-        console.log(movies);
-        dispatch({ type: FETCH_MOVIES, payload: { ...movies, query, force } });
+    return async (dispatch, state) => {
+        let movies;
+        const stateQuery = (state.movies || { }).query;
+        let newQuery = {}
+
+        if(force)
+            newQuery = query;
+        else
+            newQuery = {...stateQuery, ...query}
+
+        movies = await axios.get(EXTERNAL_SERVER + '/', { params: newQuery }).then(res => res.data);
+        dispatch({ type: FETCH_MOVIES, payload: { ...movies, query: newQuery } });
+        
     }
 }
 
