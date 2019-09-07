@@ -7,7 +7,7 @@ function App() {
   return (
     <HashRouter>
       <Switch>
-        {routes.map(route => <Route render={(props) => <Layout 
+        {routes.map(route => <Route path={route.path} render={(props) => <Layout 
         breadcrumb={(route.breadcrumb && route.breadcrumb()) || []}>
           <route.component {...props} />
         </Layout>} />)}

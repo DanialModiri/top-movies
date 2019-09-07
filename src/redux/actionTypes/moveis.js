@@ -5,3 +5,5 @@ export const FETCH_MOVIES = 'FETCH_MOVIES';
 export const FETCHING_MOVIES = 'FETCHING_MOVIES'
 
 export const FETCH_SINGLE_MOVIE = 'FETCH_SINGLE_MOVIE'
+
+export const LOADING = 'LOADING'
