@@ -1,11 +1,13 @@
 
 import axios from 'axios'
-import { FETCH_MOVIES, FETCHING_MOVIES, FETCH_SINGLE_MOVIE, LOADING } from '../actionTypes/moveis';
+import { FETCH_MOVIES, FETCH_SINGLE_MOVIE, LOADING } from '../actionTypes/moveis';
 import { EXTERNAL_SERVER } from '../../config';
 import Axios from 'axios';
 
 export const fetchMovies = (query, force) => {
     return async (dispatch, state) => {
+
+        dispatch({ type: LOADING, payload: true })
         let movies;
         const stateQuery = (state.movies || { }).query;
         let newQuery = {}
@@ -13,10 +15,11 @@ export const fetchMovies = (query, force) => {
         if(force)
             newQuery = query;
         else
-            newQuery = {...stateQuery, ...query}
+            newQuery = {...stateQuery, page: 1, ...query}
 
         movies = await axios.get(EXTERNAL_SERVER + '/', { params: newQuery }).then(res => res.data);
         dispatch({ type: FETCH_MOVIES, payload: { ...movies, query: newQuery } });
+        dispatch({ type: LOADING, payload: false })
         
     }
 }

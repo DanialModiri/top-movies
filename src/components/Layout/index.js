@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header'
 import {Link} from 'react-router-dom'
 import './index.scss'
+import Footer from './Footer';
 
 export default ({ children, breadcrumb = [] }) => {
 
@@ -18,5 +19,7 @@ export default ({ children, breadcrumb = [] }) => {
         </div>
 
         {children}
+
+        <Footer />
     </React.Fragment>
 }

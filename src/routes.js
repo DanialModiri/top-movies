@@ -7,8 +7,8 @@ import Search from './components/Search'
 
 export default [
     { component: Director, path: '/director/:name' },
-    { component: Search, path: '/search/:q' },
-    { component: Actor, path: '/actor/:name' },
+    { component: Search, path: '/search/:q', params: (props) => props.match.params.q },
+    { component: Actor, path: '/actor/:name', params: (props) => props.match.params.name },
     { component: MovieSingle, path: '/movie/:title' },
     {
         component: Home, path: '/',

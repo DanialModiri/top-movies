@@ -1,0 +1,75 @@
+
+
+.checkbox {
+    padding: 0;
+
+    label {
+        border: 1px solid #aaa;
+        padding: 0;
+        height: 25px;
+        width: 25px;
+        text-align: center;
+        line-height: 25px;
+    } 
+
+    input {
+        display: none;
+    }
+
+    .checkicon {
+        opacity: 0;
+    }
+
+    input:checked + label span {
+        opacity: 1;
+    }
+}
+
+
+.check-list {
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin: 8px auto;
+    width: 250px;
+    header {
+        display: flex;
+        direction: rtl;
+        margin: 8px;
+        
+        p {
+            font-weight: bold;
+            padding: 8px;
+            flex-grow: 1;
+        }
+
+        span {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+        }
+
+        span:hover {
+            background-color: #eee;
+        }
+    }
+
+    ul {
+        list-style: none;
+        height: 250px;
+        overflow-y: auto;
+        display: block;
+        transition: .4s ease-in;
+        li {
+            padding: 0 8px;
+            display: flex;
+            direction: rtl;
+            min-width: 150px;
+            label {
+                
+                flex-grow: 1;
+            }
+        }
+    }
+}

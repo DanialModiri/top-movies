@@ -1,11 +1,11 @@
 import { FETCH_MOVIES, FETCH_SINGLE_MOVIE } from "../actionTypes/moveis";
 
 
-export const movies = (state = { query: {} }, action) => {
+export const movies = (state = { query: { page: 1 } }, action) => {
 
     switch (action.type) {
         case FETCH_MOVIES:
-            return { ...state, query: action.payload.query, movies: action.payload.movies }
+            return { ...state, ...action.payload }
         case FETCH_SINGLE_MOVIE:
             return { ...state, single_movie: action.payload }
         default:
