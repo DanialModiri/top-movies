@@ -7,6 +7,10 @@
     font-family: IRANSans;
 }
 
+body {
+    background-color: rgb(247, 247, 247);
+}
+
 .container {
     max-width: 1050px;
     margin: 0 auto;
@@ -23,5 +27,6 @@ a:hover {
 
 .card {
     padding: 8px;
+    background-color: white;
     box-shadow: 0 1px 6px 0 rgba($color: #000000, $alpha: 0.2);
 }

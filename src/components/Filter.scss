@@ -30,27 +30,44 @@
     box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     margin: 8px auto;
-    width: 250px;
+    background-color: white;
     header {
+        padding: 4px;
         display: flex;
         direction: rtl;
-        margin: 8px;
-        
+        height: auto !important;
         p {
+            margin: 0;
             font-weight: bold;
             padding: 8px;
             flex-grow: 1;
         }
 
-        span {
-            height: 25px;
-            width: 25px;
-            border-radius: 50%;
+        $spanHeight: 25px;
+        
+        %spanSStyle {
+            height: $spanHeight;
+
             text-align: center;
-            line-height: 25px;
+            margin: auto;
+            display: block;
+            line-height: $spanHeight;
         }
 
-        span:hover {
+        span.number {
+            @extend %spanSStyle;
+            font-size: 10px;
+            
+        }
+
+        span.fa {
+            @extend %spanSStyle;
+            width: $spanHeight;
+            border-radius: 50%;
+            transition: .5s ease-in-out;
+        }
+
+        span.fa:hover {
             background-color: #eee;
         }
     }
@@ -58,6 +75,8 @@
     ul {
         list-style: none;
         height: 250px;
+        padding: 0;
+        margin: 0;
         overflow-y: auto;
         display: block;
         transition: .4s ease-in;

@@ -16,9 +16,9 @@ export const fetchMovies = (query, force) => {
             newQuery = query;
         else
             newQuery = {...stateQuery, page: 1, ...query}
-
+        dispatch({ type: FETCH_MOVIES, payload: { query: newQuery } });
         movies = await axios.get(EXTERNAL_SERVER + '/', { params: newQuery }).then(res => res.data);
-        dispatch({ type: FETCH_MOVIES, payload: { ...movies, query: newQuery } });
+        dispatch({ type: FETCH_MOVIES, payload: { ...movies } });
         dispatch({ type: LOADING, payload: false })
         
     }

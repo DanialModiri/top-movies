@@ -19,12 +19,18 @@ const Checkbox = ({ onChange, name, checked }) => {
 const Checklist = ({ title, list, onChange, value }) => {
 
     const [open, setOpen] = React.useState(false);
-
+    
+    let checkedNumber = (value || []).length;
+    checkedNumber = checkedNumber !== 0 ? `${checkedNumber} انتخاب شده` : null;
     return <div className="check-list">
         <header onClick={() => {
             setOpen(!open)
         }}>
             <p>{title}</p>
+            <span className="number">
+                {checkedNumber} 
+
+            </span>
             <span className="fa fa-angle-left" style={{ transform: open ? 'Rotate(-90deg)' : null }}></span>
         </header>
 
@@ -49,29 +55,6 @@ const Checklist = ({ title, list, onChange, value }) => {
     </div>
 }
 
-const languages = [
-    { label: 'English', name: 'English' },
-    { label: 'French', name: 'French' },
-    { label: 'Russian', name: 'Russian' }
-]
-
-const countries = [
-    { label: 'امریکا', name: 'USA' },
-    { label: 'انگلستان', name: 'UK' },
-    { label: 'ایتالیا', name: 'Italy' }
-]
-
-const genre = [
-    { label: 'اکشن', name: 'Action' },
-    { label: 'درام', name: 'Drama' },
-    { label: 'ماجراجویی', name: 'Adventure' }
-]
-
-const filters = [
-    { list: genre, title: 'ژانر', name: 'genre' },
-    { list: countries, title: 'کشور سازنده', name: 'country' },
-    { list: languages, title: 'زبان', name: 'languages' }
-]
 
 class Filter extends Component {
 
@@ -98,8 +81,8 @@ class Filter extends Component {
     }
 
     render() {
-
-        return <div className="container" style={{ display: 'flex', direction: 'rtl', flexWrap: 'wrap' }}>
+        const { style } = this.props;
+        return <div className="container" style={{ direction: 'rtl', flexWrap: 'wrap', ...style }}>
             {this.state.filters.map(filter => {
                 console.log(this.props.query[filter.name])
                 return <Checklist

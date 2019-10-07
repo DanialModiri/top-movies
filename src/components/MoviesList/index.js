@@ -21,11 +21,11 @@ const Sort = ({ sort, dispatch }) => {
          <div className="title">
             مرتب سازی
          </div>
-         {sortList.map(sort => <button onClick={() => {
+         {sortList.map(sort => <div onClick={() => {
             dispatch(fetchMovies({ sort: sort.name, page: 1 }))
          }} className={classNames("chip", { selected: selectedSort === sort.name })}>
             {sort.label}
-         </button>)}
+         </div>)}
       </div>
    </div>
 }
@@ -43,35 +43,44 @@ class MoviesList extends React.Component {
       const { sort } = this.props.query;
 
       return <React.Fragment>
-
-         <Filter />
          <Sort sort={sort} dispatch={this.props.dispatch} />
-
-
          <div style={{ marginTop: 16 }} className="container">
-            
-            <div style={{ display: loading ? 'block' : 'none' }}  className="loading">
-               
-            </div>
-            <div style={{ display: !loading ? 'block' : 'none' }} className="row movies">
-               {this.renderMovies(movies)}
-            </div>
 
+            <div className="row" style={{ direction: 'rtl' }}>
+
+            <div className="col-12 col-md-3">
+                  <Filter style={{ marginTop: 16 }} />
+               </div>
+               <div className="col-12 col-md-9">
+                  <div style={{ display: loading ? 'block' : 'none' }} className="loading">
+
+                  </div>
+                  <div style={{ display: !loading ? 'block' : 'none' }} className="row movies">
+                     {this.renderMovies(movies)}
+                  </div>
+
+
+               </div>
+
+
+            </div>
             <Pagination forcePage={page - 1}
-               containerClassName="pagination"
-               pageRangeDisplayed={4}
-               onPageChange={(page) => {
-                  this.props.dispatch(fetchMovies({ page: page.selected + 1 }))
-               }}
-               previousLabel={<span className="fa fa-angle-left" />}
-               nextLabel={<span className="fa fa-angle-right" />}
-               marginPagesDisplayed={3}
-               pageCount={Math.ceil(number / perPage)}
-               pageClassName={'pagination-item'} />
+                     containerClassName="pagination"
+                     pageRangeDisplayed={4}
+                     onPageChange={(page) => {
+                        this.props.dispatch(fetchMovies({ page: page.selected + 1 }))
+                     }}
+                     previousLabel={<span className="fa fa-angle-left" />}
+                     nextLabel={<span className="fa fa-angle-right" />}
+                     marginPagesDisplayed={3}
+                     pageCount={Math.ceil(number / perPage)}
+                     pageClassName={'pagination-item'} />
          </div>
+
+
       </React.Fragment>
    }
 }
 
-const mapStateToProps = (state) => ({...state.movies, ...state.comon});
+const mapStateToProps = (state) => ({ ...state.movies, ...state.comon });
 export default connect(mapStateToProps)(MoviesList);
